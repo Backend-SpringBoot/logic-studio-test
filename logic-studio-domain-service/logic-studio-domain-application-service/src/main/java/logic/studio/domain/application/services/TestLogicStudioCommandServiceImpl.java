@@ -59,6 +59,9 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     // Output #5: Distancia de la ruta A-E-D
     System.out.println("Output #5: " + calcularDistanciaRuta(Arrays.asList("A", "E", "D")));
 
+    // Output #6: Número de rutas de C a C con un máximo de 3 paradas
+    System.out.println("Output #6: " + contarRutasConMaxParadas("C", "C", 3));
+
   }
 
   public String calcularDistanciaRuta(List<String> ruta) {
@@ -86,6 +89,10 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
       }
     }
     return null;
+  }
+
+  public int contarRutasConMaxParadas(String inicio, String destino, int maxParadas) {
+    return contarRutasDFS(inicio, destino, maxParadas, 0);
   }
 
 

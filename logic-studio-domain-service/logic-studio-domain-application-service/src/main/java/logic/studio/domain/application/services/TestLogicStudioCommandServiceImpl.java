@@ -39,7 +39,7 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
   }
 
 
-  private Integer getAristaWeight(String origen, String destino) {
+  private Integer obtenerPesoArista(String origen, String destino) {
     List<Arista> aristas = listaAdyacencia.get(origen);
     if (aristas != null) {
       for (Arista arista : aristas) {
@@ -50,7 +50,9 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     }
     return null;
   }
-  private int countRoutesDFS(String actual, String destino, int maxParadas, int paradas) {
+
+
+  private int contarRutasDFS(String actual, String destino, int maxParadas, int paradas) {
     if (paradas > maxParadas) {
       return 0;
     }
@@ -59,7 +61,22 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
       conteo++;
     }
     for (Arista arista : listaAdyacencia.getOrDefault(actual, Collections.emptyList())) {
-      conteo += countRoutesDFS(arista.destino(), destino, maxParadas, paradas + 1);
+      conteo += contarRutasDFS(arista.destino(), destino, maxParadas, paradas + 1);
+    }
+    return conteo;
+  }
+
+  private int contarRutasExactasDFS(String actual, String destino, int paradasExactas,
+      int paradas) {
+    if (paradas > paradasExactas) {
+      return 0;
+    }
+    int conteo = 0;
+    if (paradas == paradasExactas && actual.equals(destino)) {
+      conteo++;
+    }
+    for (Arista arista : listaAdyacencia.getOrDefault(actual, Collections.emptyList())) {
+      conteo += contarRutasExactasDFS(arista.destino(), destino, paradasExactas, paradas + 1);
     }
     return conteo;
   }

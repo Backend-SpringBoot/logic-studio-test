@@ -62,6 +62,9 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     // Output #6: Número de rutas de C a C con un máximo de 3 paradas
     System.out.println("Output #6: " + contarRutasConMaxParadas("C", "C", 3));
 
+    // Output #7: Número de rutas de A a C con exactamente 4 paradas
+    System.out.println("Output #7: " + contarRutasConExactamenteNParadas("A", "C", 4));
+
   }
 
   public String calcularDistanciaRuta(List<String> ruta) {
@@ -95,6 +98,9 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     return contarRutasDFS(inicio, destino, maxParadas, 0);
   }
 
+  public int contarRutasConExactamenteNParadas(String inicio, String destino, int paradasExactas) {
+    return contarRutasExactasDFS(inicio, destino, paradasExactas, 0);
+  }
 
   private int contarRutasDFS(String actual, String destino, int maxParadas, int paradas) {
     if (paradas > maxParadas) {

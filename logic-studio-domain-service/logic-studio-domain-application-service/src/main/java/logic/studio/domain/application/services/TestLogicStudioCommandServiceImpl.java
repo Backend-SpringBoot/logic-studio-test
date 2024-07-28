@@ -37,4 +37,17 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     listaAdyacencia.clear();
     System.out.println("Todos los grafos han sido eliminados.");
   }
+
+
+  private Integer getAristaWeight(String origen, String destino) {
+    List<Arista> aristas = listaAdyacencia.get(origen);
+    if (aristas != null) {
+      for (Arista arista : aristas) {
+        if (arista.destino().equals(destino)) {
+          return arista.peso();
+        }
+      }
+    }
+    return null;
+  }
 }

@@ -65,6 +65,9 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     // Output #7: Número de rutas de A a C con exactamente 4 paradas
     System.out.println("Output #7: " + contarRutasConExactamenteNParadas("A", "C", 4));
 
+    // Output #8: Distancia más corta de A a C
+    System.out.println("Output #8: " + distanciaRutaMasCorta("A", "C"));
+
   }
 
   public String calcularDistanciaRuta(List<String> ruta) {
@@ -80,7 +83,6 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     }
     return String.valueOf(distanciaTotal);
   }
-
 
   private Integer obtenerPesoArista(String origen, String destino) {
     List<Arista> aristas = listaAdyacencia.get(origen);
@@ -102,6 +104,10 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     return contarRutasExactasDFS(inicio, destino, paradasExactas, 0);
   }
 
+  public int distanciaRutaMasCorta(String inicio, String destino) {
+    Map<String, Integer> distancias = dijkstra(inicio);
+    return distancias.getOrDefault(destino, -1);
+  }
   private int contarRutasDFS(String actual, String destino, int maxParadas, int paradas) {
     if (paradas > maxParadas) {
       return 0;

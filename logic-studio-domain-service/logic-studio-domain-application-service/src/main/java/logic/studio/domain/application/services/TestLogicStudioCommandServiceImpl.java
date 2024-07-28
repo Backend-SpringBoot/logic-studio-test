@@ -43,6 +43,22 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     // Output #1: Distancia de la ruta A-B-C
     System.out.println("Output #1: " + calcularDistanciaRuta(Arrays.asList("A", "B", "C")));
 
+    // Output #2: Distancia de la ruta A-D
+    System.out.println("Output #2: " + calcularDistanciaRuta(Arrays.asList("A", "D")));
+
+    // Output #2: Distancia de la ruta A-D
+    System.out.println("Output #2: " + calcularDistanciaRuta(Arrays.asList("A", "D")));
+
+    // Output #3: Distancia de la ruta A-D-C
+    System.out.println("Output #3: " + calcularDistanciaRuta(Arrays.asList("A", "D", "C")));
+
+    // Output #4: Distancia de la ruta A-E-B-C-D
+    System.out.println(
+        "Output #4: " + calcularDistanciaRuta(Arrays.asList("A", "E", "B", "C", "D")));
+
+    // Output #5: Distancia de la ruta A-E-D
+    System.out.println("Output #5: " + calcularDistanciaRuta(Arrays.asList("A", "E", "D")));
+
   }
 
   public String calcularDistanciaRuta(List<String> ruta) {

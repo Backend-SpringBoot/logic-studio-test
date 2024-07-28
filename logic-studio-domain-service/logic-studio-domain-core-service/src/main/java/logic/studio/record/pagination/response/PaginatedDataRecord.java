@@ -1,4 +1,4 @@
-package logic.studio.record.pagination.rsponse;
+package logic.studio.record.pagination.response;
 
 import java.util.List;
 import lombok.Builder;

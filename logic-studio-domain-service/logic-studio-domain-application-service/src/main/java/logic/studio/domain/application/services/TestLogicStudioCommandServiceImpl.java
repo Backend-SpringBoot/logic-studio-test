@@ -71,6 +71,9 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     // Output #9: Distancia más corta de B a B
     System.out.println("Output #9: " + distanciaRutaMasCorta("B","B"));
 
+    // Output #10: Número de rutas de C a C con distancia menor a 30
+    System.out.println("Output #10: " + contarRutasConDistanciaMenor("C", "C", 30));
+
   }
 
   public String calcularDistanciaRuta(List<String> ruta) {
@@ -110,6 +113,10 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
   public int distanciaRutaMasCorta(String inicio, String destino) {
     Map<String, Integer> distancias = dijkstra(inicio);
     return distancias.getOrDefault(destino, -1);
+  }
+
+  public int contarRutasConDistanciaMenor(String inicio, String destino, int maxDistancia) {
+    return contarRutasConDistanciaDFS(inicio, destino, maxDistancia, 0, 0);
   }
 
   private int contarRutasDFS(String actual, String destino, int maxParadas, int paradas) {

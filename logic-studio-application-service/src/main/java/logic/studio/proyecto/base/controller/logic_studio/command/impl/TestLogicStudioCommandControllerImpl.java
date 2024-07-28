@@ -17,4 +17,9 @@ public class TestLogicStudioCommandControllerImpl implements TestLogicStudioComm
   public void addGrafos(List<InputsGrafosRequestRecord> inputsGrafosRequestRecords) {
     testLogicStudioCommandService.addGrafos(inputsGrafosRequestRecords);
   }
+
+  @Override
+  public void clear() {
+    testLogicStudioCommandService.clear();
+  }
 }

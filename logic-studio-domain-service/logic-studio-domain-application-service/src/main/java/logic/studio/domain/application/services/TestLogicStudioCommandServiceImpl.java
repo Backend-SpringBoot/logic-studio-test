@@ -25,10 +25,16 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
   @Override
   public void addGrafos(List<InputsGrafosRequestRecord> inputsGrafosRequestRecords) {
     inputsGrafosRequestRecords.forEach(
-        input -> agregarArista(input.origen(), input.destino(), input.peso()));
+        input -> addArista(input.origen(), input.destino(), input.peso()));
   }
-  public void agregarArista(String origen, String destino, Integer peso) {
+  public void addArista(String origen, String destino, Integer peso) {
     listaAdyacencia.computeIfAbsent(origen, k -> new ArrayList<>()).add(new Arista(destino, peso));
     System.out.println("Arista agregada: " + origen + " -> " + destino + " con peso " + peso);
+  }
+
+  @Override
+  public void clear() {
+    listaAdyacencia.clear();
+    System.out.println("Todos los grafos han sido eliminados.");
   }
 }

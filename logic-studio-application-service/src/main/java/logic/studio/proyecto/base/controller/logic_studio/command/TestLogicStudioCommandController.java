@@ -17,4 +17,8 @@ public interface TestLogicStudioCommandController {
   @PostMapping("/addGrafos")
   @ResponseStatus(HttpStatus.OK)
   void addGrafos(@RequestBody List<InputsGrafosRequestRecord> inputsGrafosRequestRecords);
+
+  @PostMapping("/clear")
+  @ResponseStatus(HttpStatus.OK)
+  void clear();
 }

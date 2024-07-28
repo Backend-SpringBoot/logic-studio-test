@@ -22,4 +22,9 @@ public class TestLogicStudioCommandControllerImpl implements TestLogicStudioComm
   public void clear() {
     testLogicStudioCommandService.clear();
   }
+
+  @Override
+  public void findRoutes() {
+    testLogicStudioCommandService.calcularYMostrarResultados();
+  }
 }

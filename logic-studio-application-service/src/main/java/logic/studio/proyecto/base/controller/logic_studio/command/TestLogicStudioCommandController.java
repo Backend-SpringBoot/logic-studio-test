@@ -21,4 +21,8 @@ public interface TestLogicStudioCommandController {
   @PostMapping("/clear")
   @ResponseStatus(HttpStatus.OK)
   void clear();
+
+  @PostMapping("/routes")
+  @ResponseStatus(HttpStatus.OK)
+  void findRoutes();
 }

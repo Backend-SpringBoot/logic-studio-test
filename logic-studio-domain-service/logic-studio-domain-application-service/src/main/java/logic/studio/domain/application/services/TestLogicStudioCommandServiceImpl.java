@@ -38,6 +38,27 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     System.out.println("Todos los grafos han sido eliminados.");
   }
 
+  @Override
+  public void calcularYMostrarResultados() {
+    // Output #1: Distancia de la ruta A-B-C
+    System.out.println("Output #1: " + calcularDistanciaRuta(Arrays.asList("A", "B", "C")));
+
+  }
+
+  public String calcularDistanciaRuta(List<String> ruta) {
+    int distanciaTotal = 0;
+    for (int i = 0; i < ruta.size() - 1; i++) {
+      String origen = ruta.get(i);
+      String destino = ruta.get(i + 1);
+      Integer peso = obtenerPesoArista(origen, destino);
+      if (peso == null) {
+        return "NO SUCH ROUTE";
+      }
+      distanciaTotal += peso;
+    }
+    return String.valueOf(distanciaTotal);
+  }
+
 
   private Integer obtenerPesoArista(String origen, String destino) {
     List<Arista> aristas = listaAdyacencia.get(origen);

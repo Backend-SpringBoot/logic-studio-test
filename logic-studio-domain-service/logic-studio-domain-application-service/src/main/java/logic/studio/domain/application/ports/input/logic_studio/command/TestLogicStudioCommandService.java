@@ -8,4 +8,6 @@ public interface TestLogicStudioCommandService {
   void addGrafos(List<InputsGrafosRequestRecord> inputsGrafosRequestRecords);
 
   void clear();
+
+  void calcularYMostrarResultados();
 }

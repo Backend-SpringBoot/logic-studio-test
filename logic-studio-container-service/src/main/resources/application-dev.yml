@@ -1,0 +1,61 @@
+---
+server:
+  port: 8096
+  servlet:
+    context-path: /api/base
+application:
+  title: BASE
+  version: 1.0.0-SNAPSHOT
+web:
+  cors:
+    allowed-origins: "*"
+    max-age: 3600
+
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 24h
+  main:
+    lazy-initialization: true
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+  output:
+    ansi:
+      enabled: always
+
+  cloud:
+    config:
+      enabled: false
+  messages:
+    basename: i18n/errors,i18n/problems
+    use-code-as-default-message: true
+    mvc:
+      throw-exception-if-no-handler-found: true
+problem:
+  enabled: true
+  cause-chains-enabled: true
+  jackson-module-enabled: true
+  dao-advice-enabled: true
+  security-advice-enabled: true
+  debug-enabled: true
+  stacktrace-enabled: true
+eureka:
+  client:
+    enabled: false
+logging:
+  level:
+    root: INFO
+    logic.tudio: INFO
+    org.springframework: INFO
+    net.ttddyy.dsproxy.listener: DEBUG
+    org.springframework.context.i18n: INFO
+management:
+  tracing:
+    sampling:
+      probability: 1

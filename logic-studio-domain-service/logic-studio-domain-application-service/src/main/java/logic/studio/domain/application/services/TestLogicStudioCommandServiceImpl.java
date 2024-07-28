@@ -50,4 +50,17 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     }
     return null;
   }
+  private int countRoutesDFS(String actual, String destino, int maxParadas, int paradas) {
+    if (paradas > maxParadas) {
+      return 0;
+    }
+    int conteo = 0;
+    if (paradas > 0 && actual.equals(destino)) {
+      conteo++;
+    }
+    for (Arista arista : listaAdyacencia.getOrDefault(actual, Collections.emptyList())) {
+      conteo += countRoutesDFS(arista.destino(), destino, maxParadas, paradas + 1);
+    }
+    return conteo;
+  }
 }

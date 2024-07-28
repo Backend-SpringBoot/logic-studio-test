@@ -80,4 +80,30 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     }
     return conteo;
   }
+
+  public Map<String, Integer> dijkstra(String inicio) {
+    Map<String, Integer> distancias = new HashMap<>();
+    PriorityQueue<Arista> colaPrioridad = new PriorityQueue<>(
+        Comparator.comparingInt(Arista::peso));
+    colaPrioridad.add(new Arista(inicio, 0));
+
+    while (!colaPrioridad.isEmpty()) {
+      Arista actual = colaPrioridad.poll();
+      String nodo = actual.destino();
+      int distancia = actual.peso();
+
+      if (distancias.containsKey(nodo)) {
+        continue;
+      }
+
+      distancias.put(nodo, distancia);
+
+      for (Arista vecino : listaAdyacencia.getOrDefault(nodo, Collections.emptyList())) {
+        if (!distancias.containsKey(vecino.destino())) {
+          colaPrioridad.add(new Arista(vecino.destino(), distancia + vecino.peso()));
+        }
+      }
+    }
+    return distancias;
+  }
 }

@@ -106,4 +106,19 @@ public class TestLogicStudioCommandServiceImpl implements TestLogicStudioCommand
     }
     return distancias;
   }
+
+  private int contarRutasConDistanciaDFS(String actual, String destino, int maxDistancia,
+      int distanciaActual, int conteo) {
+    if (distanciaActual >= maxDistancia) {
+      return conteo;
+    }
+    if (distanciaActual > 0 && actual.equals(destino)) {
+      conteo++;
+    }
+    for (Arista arista : listaAdyacencia.getOrDefault(actual, Collections.emptyList())) {
+      conteo = contarRutasConDistanciaDFS(arista.destino(), destino, maxDistancia,
+          distanciaActual + arista.peso(), conteo);
+    }
+    return conteo;
+  }
 }
